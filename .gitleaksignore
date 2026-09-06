@@ -1,0 +1,4 @@
+# Reviewed false positives: test-only JWT fixture (2) and RFC WebSocket handshake sample (1).
+1b67f7170e92591adb51cba76cbf110c96563598:backend/src/test/java/com/example/ssafesta/SharedConfigProfileTest.java:generic-api-key:33
+568bdabeb92066b299b6f171a3137903f8cfb7bd:backend/src/test/java/com/example/ssafesta/SharedConfigProfileTest.java:generic-api-key:33
+7ca2656a2874a09a417f26baf5102a75d34dbf87:infra/unity-server/scripts/verify-public-wss.sh:generic-api-key:45

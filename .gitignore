@@ -4,12 +4,34 @@ reference/
 references/
 Reference/
 
+# 포트폴리오에서 제외한 Unity 에셋과 빌드
+festa-unity/Assets/ithappy/
+festa-unity/Assets/Palmov Island/
+festa-unity/Assets/Hyper casual cartoon castles/
+festa-unity/Assets/danthaigames/
+festa-unity/Assets/300Mind/
+festa-unity/Assets/_Project/Art/
+festa-unity/Assets/_Project/Models/
+festa-unity/Assets/_Project/Resources/
+festa-unity/Assets/_Project/Animations/
+festa-unity/Assets/_Project/Audio/
+festa-unity/Assets/Screenshots/
+festa-unity/Builds/
+festa-unity/Assets/_Project/Experimental/
+festa-unity/Assets/TextMesh Pro/Examples & Extras/
+work/
+spikes/
+
 # Secret / Credential — 절대 커밋 금지 (.env.example은 허용)
 .env
 .env.*
 !.env.example
+.gltok
 *.pem
 *.p12
+*.pfx
+*.jks
+*.keystore
 *.key
 infra/environments/**/secrets/
 
