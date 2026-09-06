@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="title desc">
   <title id="title">SSAFESTA 측정 전후 비교</title>
-  <desc id="desc">축제 구역 드로우콜, 아바타 카탈로그 메모리, 11인 수신 트래픽의 전후 측정값</desc>
+  <desc id="desc">부스 내부 시점 드로우콜, 아바타 카탈로그 메모리, 11인 수신 트래픽의 전후 측정값</desc>
   <rect width="1000" height="520" rx="24" fill="#0b1220"/>
-  <text x="52" y="64" fill="#f8fafc" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="30" font-weight="700">측정으로 남긴 변화</text>
+  <text x="52" y="64" fill="#f8fafc" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="30" font-weight="700">변경 전후 측정값</text>
   <text x="52" y="96" fill="#94a3b8" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="16">각 항목의 이전 값을 100%로 두고 비교했습니다.</text>
 
   <g font-family="Arial, 'Noto Sans KR', sans-serif">
-    <text x="52" y="148" fill="#e2e8f0" font-size="18" font-weight="600">축제 구역 드로우콜</text>
+    <text x="52" y="148" fill="#e2e8f0" font-size="18" font-weight="600">부스 내부 드로우콜</text>
     <rect x="300" y="126" width="620" height="24" rx="12" fill="#f97316" opacity="0.9"/>
     <rect x="300" y="160" width="132" height="24" rx="12" fill="#38bdf8"/>
     <text x="930" y="145" text-anchor="end" fill="#fed7aa" font-size="16">1,088</text>
@@ -22,7 +22,7 @@
     <rect x="300" y="346" width="620" height="24" rx="12" fill="#f97316" opacity="0.9"/>
     <rect x="300" y="380" width="466" height="24" rx="12" fill="#38bdf8"/>
     <text x="930" y="365" text-anchor="end" fill="#fed7aa" font-size="16">4,529 KB/s</text>
-    <text x="780" y="399" fill="#bae6fd" font-size="16">3,290~3,505 KB/s · 약 -25%</text>
+    <text x="930" y="426" text-anchor="end" fill="#bae6fd" font-size="16">3,290~3,505 KB/s · 약 -25%</text>
 
     <rect x="52" y="448" width="14" height="14" rx="7" fill="#f97316"/>
     <text x="76" y="460" fill="#cbd5e1" font-size="15">변경 전</text>
