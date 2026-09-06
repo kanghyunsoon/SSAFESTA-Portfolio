@@ -39,15 +39,11 @@ Spring, React, AI 서버의 내부 구현은 팀원이 맡았습니다. 저는 U
 
 ```mermaid
 flowchart LR
-    FE[React Booth Studio] -->|Draft / Publish| BE[(Spring API)]
-    BE -->|World Session / Published Layout| U[Unity WebGL Client]
-    U <-->|NGO over WebSocket| DS[Unity Linux Dedicated Server]
-    U -->|상호작용 이벤트| FE
-
-    subgraph MY[제가 맡은 범위]
-        U
-        DS
-    end
+    FE["React Booth Studio"] -->|"Draft / Publish"| BE["Spring API"]
+    BE -->|"World Session / Published Layout"| U["Unity WebGL Client<br/>내 담당"]
+    U -->|"NGO / WebSocket"| DS["Unity Linux Dedicated Server<br/>내 담당"]
+    DS -->|"NGO / WebSocket"| U
+    U -->|"상호작용 이벤트"| FE
 ```
 
 영구 데이터는 Spring이 소유하고, 전용 서버는 접속 승인과 실시간 상태를 맡습니다. 정적 부스 오브젝트는 서버에서 하나씩 복제하지 않고 같은 Published Layout을 받은 각 클라이언트가 생성합니다.
