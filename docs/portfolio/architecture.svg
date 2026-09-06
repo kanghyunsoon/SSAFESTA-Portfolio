@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">SSAFESTA 구조와 강형순 담당 범위</title>
+  <desc id="desc">React Booth Studio와 Spring API는 팀원이 구현했고, Unity WebGL Client와 Unity Linux Dedicated Server는 강형순이 담당했습니다.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="420" rx="24" fill="#0b1220"/>
+  <text x="48" y="58" fill="#f8fafc" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="30" font-weight="700">서비스 연결 구조</text>
+  <text x="48" y="88" fill="#94a3b8" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="16">웹에서 만든 부스를 Unity 월드에 발행하고 전용 서버에서 실시간 상태를 동기화합니다.</text>
+
+  <rect x="598" y="112" width="554" height="248" rx="22" fill="#0c4a6e" opacity="0.38" stroke="#38bdf8" stroke-width="2"/>
+  <rect x="618" y="128" width="116" height="34" rx="17" fill="#38bdf8"/>
+  <text x="676" y="151" text-anchor="middle" fill="#082f49" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="15" font-weight="700">내 담당 범위</text>
+
+  <g font-family="Arial, 'Noto Sans KR', sans-serif">
+    <rect x="48" y="190" width="230" height="112" rx="18" fill="#172033" stroke="#475569" stroke-width="2"/>
+    <text x="163" y="234" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">React Booth Studio</text>
+    <text x="163" y="266" text-anchor="middle" fill="#94a3b8" font-size="15">팀원 구현</text>
+
+    <rect x="338" y="190" width="210" height="112" rx="18" fill="#172033" stroke="#475569" stroke-width="2"/>
+    <text x="443" y="234" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">Spring API</text>
+    <text x="443" y="266" text-anchor="middle" fill="#94a3b8" font-size="15">팀원 구현</text>
+
+    <rect x="638" y="190" width="220" height="112" rx="18" fill="#082f49" stroke="#38bdf8" stroke-width="3"/>
+    <text x="748" y="234" text-anchor="middle" fill="#f8fafc" font-size="21" font-weight="700">Unity WebGL</text>
+    <text x="748" y="266" text-anchor="middle" fill="#bae6fd" font-size="15">클라이언트</text>
+
+    <rect x="918" y="190" width="210" height="112" rx="18" fill="#082f49" stroke="#38bdf8" stroke-width="3"/>
+    <text x="1023" y="226" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="700">Unity Linux</text>
+    <text x="1023" y="254" text-anchor="middle" fill="#f8fafc" font-size="20" font-weight="700">Dedicated Server</text>
+    <text x="1023" y="280" text-anchor="middle" fill="#bae6fd" font-size="15">실시간 상태 소유</text>
+
+    <line x1="278" y1="246" x2="330" y2="246" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="304" y="180" text-anchor="middle" fill="#cbd5e1" font-size="13">Draft</text>
+    <text x="304" y="198" text-anchor="middle" fill="#cbd5e1" font-size="13">Publish</text>
+
+    <line x1="548" y1="246" x2="630" y2="246" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="589" y="180" text-anchor="middle" fill="#cbd5e1" font-size="13">세션</text>
+    <text x="589" y="198" text-anchor="middle" fill="#cbd5e1" font-size="13">Layout</text>
+
+    <line x1="858" y1="232" x2="910" y2="232" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow)"/>
+    <line x1="910" y1="260" x2="858" y2="260" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="884" y="180" text-anchor="middle" fill="#bae6fd" font-size="13">NGO</text>
+    <text x="884" y="198" text-anchor="middle" fill="#bae6fd" font-size="13">WebSocket</text>
+  </g>
+</svg>
