@@ -28,6 +28,7 @@ SSAFESTA는 사용자가 웹에서 부스를 꾸미고 Unity 월드에 접속해
 ## 제가 맡은 범위
 
 - 웹에서 발행한 부스 배치를 Unity가 읽어 런타임에 생성하는 흐름
+- 팀원이 SketchUp으로 만든 캠퍼스 11층 모델의 Unity 가져오기와 WebGL 최적화
 - 캐릭터 조립, 외형 저장·동기화, 원격 아바타 표시
 - Netcode for GameObjects 기반 접속 승인, 플레이어 상태 복제, 재접속
 - Unity–React 메시지 브리지와 Spring API 계약 연결
@@ -57,13 +58,25 @@ Spring, React, AI 서버의 내부 구현은 팀원이 맡았습니다. 저는 U
 
 별도로 아바타 40기를 표시한 WebGL 빌드에서는 변경 전후 드로우콜이 31.7%, 프레임 시간이 7.7% 줄었습니다. 드로우콜만으로 프레임 저하를 설명하기 어려워 Animator 갱신 주기도 시험했습니다. 처음에는 효과가 있다고 봤지만 조건을 번갈아 재측정하니 차이가 사라졌습니다. 이 수치는 성과에서 제외하고, 이후에는 워밍업 뒤 같은 조건을 반복 측정하도록 기준을 바꿨습니다.
 
-### 3. 아바타 텍스처가 WebGL 메모리를 차지했습니다
+### 3. 캠퍼스 11층 모델 하나가 오브젝트 2,043개로 나뉘어 있었습니다
+
+실제 SSAFY 캠퍼스 11층을 팀원이 SketchUp으로 만들었고, 저는 이 모델을 Unity로 가져와 WebGL에서 돌아가게 줄였습니다.
+
+<img src="docs/portfolio/campus-11f.png" alt="Unity WebGL로 옮긴 SSAFY 캠퍼스 11층 라운지" width="640">
+
+모델 형식은 FBX, glTF, GLB, DAE로 내보내 비교한 뒤 이름과 계층이 유지되는 `.skp`를 그대로 쓰기로 했습니다. 모델을 다시 받을 때마다 손으로 정리하지 않도록, 가져올 때 계층 이름을 자동으로 정리하는 에디터 스크립트를 만들었습니다. 오브젝트 번호는 내보낼 때마다 바뀌어서 지오메트리와 머티리얼로 구분했습니다.
+
+재질이 같은 메시를 합쳐 11층 오브젝트를 `2,043 → 156`, 렌더러를 `1,425 → 138`로 줄였습니다. 부스 슬롯처럼 나중에 바뀌는 오브젝트는 합치지 않았습니다.
+
+사물함 벽은 정점을 줄이는 작업 뒤 자물쇠가 모두 사라졌습니다. 정점 수만 보고 끝낸 탓이었고, 서브메시 5개가 1개로 합쳐져 나머지 재질이 그려지지 않았습니다. Unity는 이 상황을 오류로 알려 주지 않습니다. 서브메시마다 따로 정점을 줄이는 도구를 만들어 정점을 `1,068,490 → 13,678`로 줄이면서 자물쇠를 되살렸고, 이후에는 정점 수와 함께 재질 슬롯 수를 확인합니다.
+
+### 4. 아바타 텍스처가 WebGL 메모리를 차지했습니다
 
 텍스처 최대 해상도를 조정해 아바타 카탈로그 메모리를 `490.3 → 194.3 MB`로 줄였습니다. 카탈로그를 확인하니 2048px 텍스처가 50종 있었고, 화면에서 보이는 크기를 기준으로 Import 설정의 상한을 1024px로 낮췄습니다.
 
 목록에서 작게 보이는 UI 이미지는 표시 크기에 맞춰 별도 상한을 적용했습니다. UI 텍스처는 `65.70 → 4.32 MB`, 전체 WebGL 빌드는 8.0MB 줄었습니다. 해상도 변경 뒤에는 아바타 외형을 캡처로 비교했습니다.
 
-### 4. 파트별 구현은 끝났지만 Unity 통합에서 계약이 어긋났습니다
+### 5. 파트별 구현은 끝났지만 Unity 통합에서 계약이 어긋났습니다
 
 Unity 요청과 응답 형식을 Spring 계약에 맞추고, 부스 조회부터 월드 생성까지 이어서 검증했습니다. 팀은 구현 전에 SDD 방식으로 기능과 API 계약을 정하고 AI 에이전트로 코드를 작성했습니다. 하지만 통합해 보니 문서와 코드에 부스 조회 경로가 `/layout/published`와 `/layouts/published`, 오브젝트 식별자가 `id`와 `objectId`로 나뉘어 있었습니다.
 
@@ -95,6 +108,7 @@ AI와 문서·코드의 차이를 확인하며 Unity DTO와 요청 경로를 수
 |---|---|
 | 네트워크·접속 승인 | [`festa-unity/Assets/_Project/Scripts/Network`](festa-unity/Assets/_Project/Scripts/Network) |
 | 부스 런타임·Spring 연동 | [`festa-unity/Assets/_Project/Scripts/Booth`](festa-unity/Assets/_Project/Scripts/Booth) · [`Integration`](festa-unity/Assets/_Project/Scripts/Integration) |
+| 11층 모델 가져오기·정점 감소 | [`WorldModelNaming.cs`](festa-unity/Assets/_Project/Scripts/Editor/WorldModelNaming.cs) · [`SubmeshPreservingDecimator.cs`](festa-unity/Assets/_Project/Scripts/Editor/SubmeshPreservingDecimator.cs) |
 | 아바타 조립·동기화 | [`festa-unity/Assets/_Project/Scripts/World/Avatar`](festa-unity/Assets/_Project/Scripts/World/Avatar) |
 | 성능 측정 도구 | [`festa-unity/Assets/_Project/Scripts/Diagnostics`](festa-unity/Assets/_Project/Scripts/Diagnostics) · [`Editor`](festa-unity/Assets/_Project/Scripts/Editor) |
 | Unity 테스트 코드 | [`festa-unity/Assets/_Project/Tests`](festa-unity/Assets/_Project/Tests) |
