@@ -1,6 +1,6 @@
 # SSAFESTA
 
-6인 팀에서 **Unity WebGL 클라이언트와 Linux Dedicated Server**를 맡았습니다. 웹에서 만든 부스를 월드에 생성하고, 아바타와 접속 상태를 동기화하는 기능을 AI 에이전트와 함께 구현했습니다. 각 파트의 연결을 확인하고 접속 실패와 프레임 저하를 수정했습니다.
+6인 팀의 팀장이었고, 개발은 **Unity WebGL 클라이언트와 Linux Dedicated Server**를 맡았습니다. 구현 전에 팀원들과 담당 범위, 완료 조건, Git 규칙을 문서로 정하고 Jira로 일정을 관리했습니다. 웹에서 만든 부스를 월드에 생성하고 아바타와 접속 상태를 동기화하는 기능은 AI 에이전트와 함께 구현했고, 각 파트의 연결을 확인하며 접속 실패와 프레임 저하를 수정했습니다.
 
 SSAFESTA는 사용자가 웹에서 부스를 꾸미고 Unity 월드에 접속해 서로의 부스를 방문하는 프로젝트입니다.
 
@@ -21,7 +21,7 @@ SSAFESTA는 사용자가 웹에서 부스를 꾸미고 Unity 월드에 접속해
 |---|---|
 | 기간 | 2026.08.10 – 2026.09.06 |
 | 인원 | 6명 |
-| 담당 | Unity Client · Netcode for GameObjects · Linux Dedicated Server |
+| 담당 | 팀장(일정·개발 규칙) · Unity Client · Netcode for GameObjects · Linux Dedicated Server |
 | 구현 언어 | C# |
 | 실행 환경 | Unity 6 · WebGL · Linux Server · Docker |
 
