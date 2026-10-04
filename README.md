@@ -60,7 +60,7 @@ Spring, React, AI 서버의 내부 구현은 팀원이 맡았습니다. 저는 U
 
 ### 3. 캠퍼스 11층 모델 하나가 오브젝트 2,043개로 나뉘어 있었습니다
 
-실제 SSAFY 캠퍼스 11층을 팀원이 SketchUp으로 만들었고, 저는 이 모델을 Unity로 가져와 WebGL에서 돌아가게 줄였습니다.
+실제 SSAFY 캠퍼스 11층은 팀원이 SketchUp으로 만들었고, 저는 이 모델을 Unity로 가져와 웹 브라우저에서 실행되도록 오브젝트 수와 정점 수를 줄였습니다.
 
 <img src="docs/portfolio/campus-11f.png" alt="Unity WebGL로 옮긴 SSAFY 캠퍼스 11층 라운지" width="640">
 
