@@ -15,6 +15,8 @@ SSAFESTA는 사용자가 웹에서 부스를 꾸미고 Unity 월드에 접속해
   </tr>
 </table>
 
+[시연 영상](https://youtu.be/dF9A3dqVsq4)
+
 ## 프로젝트 정보
 
 | 구분 | 내용 |
