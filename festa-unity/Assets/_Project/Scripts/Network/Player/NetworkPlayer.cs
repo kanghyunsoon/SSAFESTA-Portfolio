@@ -98,16 +98,20 @@ namespace Festa.Network
 
         // ---------- Booth Entry (doc 16 §4 Server RPC 후보) ----------
 
-        [Rpc(SendTo.Server)]
-        public void EnterBoothServerRpc(int boothId)
+        // [Rpc(SendTo.Server)] 는 기본적으로 소유자를 확인하지 않아, 다른 사람의 플레이어 객체로
+        // 호출하면 그 사람의 부스 상태를 바꿀 수 있었다. 서버에서 발신자를 확인한다.
+        [Rpc(SendTo.Server, RequireOwnership = true)]
+        public void EnterBoothServerRpc(int boothId, RpcParams rpcParams = default)
         {
+            if (rpcParams.Receive.SenderClientId != OwnerClientId) return;
             // TODO(P1): booth 존재/거리 검증
             CurrentBoothId.Value = boothId;
         }
 
-        [Rpc(SendTo.Server)]
-        public void ExitBoothServerRpc()
+        [Rpc(SendTo.Server, RequireOwnership = true)]
+        public void ExitBoothServerRpc(RpcParams rpcParams = default)
         {
+            if (rpcParams.Receive.SenderClientId != OwnerClientId) return;
             CurrentBoothId.Value = -1;
         }
 

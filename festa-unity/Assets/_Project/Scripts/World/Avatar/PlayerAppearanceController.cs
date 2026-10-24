@@ -185,9 +185,18 @@ namespace Festa.World
             Debug.LogError($"[Appearance] {LastRequestError}");
         }
 
-        [Rpc(SendTo.Server)]
-        void RequestChangeServerRpc(string encoded)
+        // [Rpc(SendTo.Server)] 는 기본적으로 소유자를 확인하지 않는다. 그대로 두면 아무 접속자나
+        // 다른 사람의 플레이어 객체로 이 RPC 를 보내 그 사람의 외형을 바꿀 수 있었다.
+        // 호출하는 클라이언트 쪽 IsOwner 확인은 조작된 클라이언트를 막지 못하므로 서버에서 발신자를 다시 본다.
+        [Rpc(SendTo.Server, RequireOwnership = true)]
+        void RequestChangeServerRpc(string encoded, RpcParams rpcParams = default)
         {
+            if (rpcParams.Receive.SenderClientId != OwnerClientId)
+            {
+                Debug.LogWarning($"[Appearance] 거부: 소유자가 아닌 요청 sender={rpcParams.Receive.SenderClientId} owner={OwnerClientId}");
+                return;
+            }
+
             // TODO(P1): 보유하지 않은 파츠 차단 등 소유권 검증
             //
             // 받은 문자열을 그대로 기록한다. 예전에는 Decode→Encode 왕복으로 "정규화"했는데,
